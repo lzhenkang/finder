@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 before_action :authenticate_user!, :except => [ :show, :index ]
     def all
-      @requests = Request.where.not(user: current_user)
+      @requests = Request.where.not(user: current_user, accepted: true)
     end
 
     def index

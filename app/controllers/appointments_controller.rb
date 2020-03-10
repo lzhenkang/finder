@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 before_action :authenticate_user!, :except => [ :show, :index ]
     def all
-      @appointments = Appointment.where.not(user: current_user)
+      @appointments = Appointment.where.not(user: current_user, accepted: true)
     end
 
     def new
@@ -20,6 +20,7 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     def show
       @appointments = Appointment.find_by(id: params[:id])
       @user_id = current_user.id
+      @comment = Comment.where(appointment_id: params[:id])
     end
 
     def edit
@@ -49,6 +50,17 @@ before_action :authenticate_user!, :except => [ :show, :index ]
       @accept.save
       redirect_back(fallback_location: root_path)
     end
+
+    def comment
+      @comments = Comment.new(comment_params)
+      @comments.appointment_id = params[:id]
+      @comments.save
+      redirect_back(fallback_location: root_path)
+    end
+
+    def deleteComment
+      # @comment = Comment.where(id: )
+    end
 end
 
 private
@@ -58,4 +70,8 @@ private
 
     def join_params
     params.require(:join).permit(:user_id, :request_id)
+  end
+
+    def comment_params
+    params.require(:comment).permit(:appointment_id, :user_id, :comment)
   end

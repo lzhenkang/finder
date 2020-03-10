@@ -7,4 +7,5 @@ class User < ApplicationRecord
     has_many :accepted_requests
     has_many :appointments
     has_many :accepted_appointments
+    has_many :comments
 end

@@ -23,4 +23,5 @@ Rails.application.routes.draw do
     delete 'appointments/:id' => 'appointments#destroy'
     post 'appointments/:id' => 'appointments#join'
     delete 'appointments/:id/unjoin' => 'appointments#unjoin'
+    post 'appointments/:id/comment' => 'appointments#comment'
 end

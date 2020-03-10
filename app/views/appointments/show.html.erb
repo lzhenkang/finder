@@ -29,3 +29,38 @@ appointments/show.html.erb
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
 <%end%>
+
+<% if (@appointments.user_id != @user_id) && (@appointments.accepted == true)%>
+		<%= form_with scope: :comment, url: "/appointments/" + params[:id] + "/comment", local: true do |form| %>
+			  <p>
+			    <%= form.hidden_field :user_id, :value => @user_id %>
+			  </p>
+			  <div>
+			    <%= form.text_area :comment %>
+			  </div>
+			  <p>
+			    <%= form.submit %>
+			  </p>
+	  <%end%>
+<%end%>
+
+<% if (@appointments.user_id != @user_id) && (@appointments.accepted == true)%>
+<table class="table">
+  <thead>
+    <tr>
+    	<th scope="col">user_id</th>
+      <th scope="col">comment</th>
+      <th scope="col">Delete Comment(placeholder)</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @comment.each do |comment| %>
+    <tr>
+      <td><%= comment.user_id %></td>
+      <td><%= comment.comment %></td>
+      <td><%= link_to 'delete placeholder (dont click)', "/appointments/" + params[:id] + "/unjoin",method: :delete,data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+<%end%>
+  </tbody>
+</table>
+<%end%>
