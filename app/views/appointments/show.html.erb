@@ -1,1 +1,31 @@
 appointments/show.html.erb
+
+<div>id: <%= @appointments.id %></div>
+<div>user_id: <%= @appointments.user_id %></div>
+<div>time_slot: <%= @appointments.time_slot %></div>
+<div>date: <%= @appointments.date %></div>
+<div>accepted: <%= @appointments.accepted %></div>
+
+<% if @appointments.user_id == @user_id %>
+		<%= link_to 'Destroy', "/appointments/" + params[:id],
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+<%end%>
+
+<% if (@appointments.user_id != @user_id) && (@appointments.accepted == false)%>
+		<%= form_with scope: :join, url: "/appointments/" + params[:id], local: true do |form| %>
+			  <p>
+			    <%= form.hidden_field :user_id, :value => @user_id %>
+			  </p>
+			  <p>
+			    <%= form.submit %>
+			  </p>
+	  <%end%>
+<%end%>
+
+<!-- if user (user_id) already accepted request -->
+<% if (@appointments.user_id != @user_id) && (@appointments.accepted == true)%>
+		<%= link_to 'unjoin', "/appointments/" + params[:id] + "/unjoin",
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+<%end%>

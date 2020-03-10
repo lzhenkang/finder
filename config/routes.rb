@@ -21,4 +21,6 @@ Rails.application.routes.draw do
     get '/appointments/:id/edit' => 'appointments#edit', as: 'edit_appointment'
     patch '/appointments/:id' => 'appointments#update'
     delete 'appointments/:id' => 'appointments#destroy'
+    post 'appointments/:id' => 'appointments#join'
+    delete 'appointments/:id/unjoin' => 'appointments#unjoin'
 end

@@ -64,11 +64,12 @@ before_action :authenticate_user!, :except => [ :show, :index ]
 
     def accepted
       @accepted_request = AcceptedRequest.where(user_id: current_user)
-
+      @accepted_appointment = AcceptedAppointment.where(user_id: current_user)
     end
 
     def created
       @request = Request.where(user: current_user)
+      @appointment = Appointment.where(user: current_user)
     end
 
 end
