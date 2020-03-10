@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_064914) do
+ActiveRecord::Schema.define(version: 2020_03_09_133631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accepted_appointments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "appointment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_accepted_appointments_on_appointment_id"
+    t.index ["user_id"], name: "index_accepted_appointments_on_user_id"
+  end
+
+  create_table "accepted_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_accepted_requests_on_request_id"
+    t.index ["user_id"], name: "index_accepted_requests_on_user_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "time_slot"
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.text "description"
+    t.text "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "accepted"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

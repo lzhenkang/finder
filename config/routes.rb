@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     get '/requests/:id/edit' => 'requests#edit', as: 'edit_request'
     patch '/requests/:id' => 'requests#update'
     delete 'requests/:id' => 'requests#destroy'
+    post 'requests/:id' => 'requests#join'
+    delete 'requests/:id/unjoin' => 'requests#unjoin'
+    get '/accepted' => 'requests#accepted'
+    get '/created' => 'requests#created'
 
     get '/appointments/all' => 'appointments#all', as: 'all_appointment'
     get '/appointments/new' => 'appointments#new', as: 'new_appointment'

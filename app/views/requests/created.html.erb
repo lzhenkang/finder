@@ -1,7 +1,4 @@
-requests/all.html.erb
-<div><%= link_to 'New Requests', "/requests/new" %></div>
-<%= link_to 'Back', root_path %>
-
+/created
 
 <table class="table">
   <thead>
@@ -15,7 +12,7 @@ requests/all.html.erb
     </tr>
   </thead>
   <tbody>
-<% @requests.each do |request| %>
+<% @request.each do |request| %>
     <tr>
       <td><%= request.id %></td>
       <td><%= request.user_id %></td>
