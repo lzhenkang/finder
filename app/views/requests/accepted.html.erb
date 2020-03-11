@@ -1,53 +1,55 @@
-/accepted
+<div class="container">
+		/accepted
 
-<!-- <#% request = @accepted_request.map{|x| x.request} %> -->
+		<!-- <#% request = @accepted_request.map{|x| x.request} %> -->
 
-<table class="table">
-  <thead>
-    <tr>
-    	<th scope="col">request_id</th>
-      <th scope="col">user_id</th>
-      <th scope="col">description</th>
-      <th scope="col">location</th>
-      <th scope="col">accepted</th>
-      <th scope="col">view request</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @accepted_request.each do |request| %>
-    <tr>
-      <td><%= request.request.id %></td>
-      <td><%= request.request.user_id %></td>
-      <td><%= request.request.description %></td>
-      <td><%= request.request.location %></td>
-      <td><%= request.request.accepted %></td>
-      <td><%= link_to 'View', "/requests/" + request.request.id.to_s %></td>
-    </tr>
-<%end%>
-  </tbody>
-</table>
+		<table class="table">
+		  <thead>
+		    <tr>
+		    	<th scope="col">request_id</th>
+		      <th scope="col">user_id</th>
+		      <th scope="col">description</th>
+		      <th scope="col">location</th>
+		      <th scope="col">accepted</th>
+		      <th scope="col">view request</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		<% @accepted_request.each do |request| %>
+		    <tr>
+		      <td><%= request.request.id %></td>
+		      <td><%= request.request.user_id %></td>
+		      <td><%= request.request.description %></td>
+		      <td><%= request.request.location %></td>
+		      <td><%= request.request.accepted %></td>
+		      <td><%= link_to 'View', "/requests/" + request.request.id.to_s %></td>
+		    </tr>
+		<%end%>
+		  </tbody>
+		</table>
 
-<table class="table">
-  <thead>
-    <tr>
-    	<th scope="col">appointment_id</th>
-      <th scope="col">user_id</th>
-      <th scope="col">time_slot</th>
-      <th scope="col">date</th>
-      <th scope="col">accepted</th>
-      <th scope="col">view request</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @accepted_appointment.each do |appointment| %>
-    <tr>
-      <td><%= appointment.appointment.id %></td>
-      <td><%= appointment.appointment.user_id %></td>
-      <td><%= appointment.appointment.time_slot %></td>
-      <td><%= appointment.appointment.date %></td>
-      <td><%= appointment.appointment.accepted %></td>
-      <td><%= link_to 'View', "/appointments/" + appointment.appointment.id.to_s %></td>
-    </tr>
-<%end%>
-  </tbody>
-</table>
+		<table class="table">
+		  <thead>
+		    <tr>
+		    	<th scope="col">appointment_id</th>
+		      <th scope="col">user_id</th>
+		      <th scope="col">time_slot</th>
+		      <th scope="col">date</th>
+		      <th scope="col">accepted</th>
+		      <th scope="col">view request</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		<% @accepted_appointment.each do |appointment| %>
+		    <tr>
+		      <td><%= appointment.appointment.id %></td>
+		      <td><%= appointment.appointment.user_id %></td>
+		      <td><%= appointment.appointment.time_slot %></td>
+		      <td><%= appointment.appointment.date %></td>
+		      <td><%= appointment.appointment.accepted %></td>
+		      <td><%= link_to 'View', "/appointments/" + appointment.appointment.id.to_s %></td>
+		    </tr>
+		<%end%>
+		  </tbody>
+		</table>
+</div>

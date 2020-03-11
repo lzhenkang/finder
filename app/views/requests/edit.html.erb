@@ -1,24 +1,26 @@
-requests/edit.html.erb
+<div class="container">
+		requests/edit.html.erb
 
-<%= form_with scope: :request, model: @request, local: true do |form| %>
+		<%= form_with scope: :request, model: @request, local: true do |form| %>
 
-  <input name="user_id" type="hidden" value= <%= @user_id.to_i %>>
+		  <input name="user_id" type="hidden" value= <%= @user_id.to_i %>>
 
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </p>
+		  <p>
+		    <%= form.label :description %><br>
+		    <%= form.text_area :description %>
+		  </p>
 
 
-  <input name="accepted" type="hidden" value= false>
+		  <input name="accepted" type="hidden" value= false>
 
-  <p>
-    <%= form.label :location %><br>
-    <%= form.text_area :location %>
-  </p>
+		  <p>
+		    <%= form.label :location %><br>
+		    <%= form.text_area :location %>
+		  </p>
 
-  <p>
-    <%= form.submit %>
-  </p>
+		  <p>
+		    <%= form.submit %>
+		  </p>
 
-<% end %>
+		<% end %>
+</div>

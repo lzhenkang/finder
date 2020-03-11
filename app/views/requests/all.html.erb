@@ -1,29 +1,14 @@
-requests/all.html.erb
-<div><%= link_to 'New Requests', "/requests/new" %></div>
-<%= link_to 'Back', root_path %>
+<div class="container">
+		<button type="button" class="btn btn-primary btn-lg"><%= link_to 'New Requests', "/requests/new" %></button>
 
-
-<table class="table">
-  <thead>
-    <tr>
-    	<th scope="col">request_id</th>
-      <th scope="col">user_id</th>
-      <th scope="col">description</th>
-      <th scope="col">location</th>
-      <th scope="col">accepted</th>
-      <th scope="col">view request</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @requests.each do |request| %>
-    <tr>
-      <td><%= request.id %></td>
-      <td><%= request.user_id %></td>
-      <td><%= request.description %></td>
-      <td><%= request.location %></td>
-      <td><%= request.accepted %></td>
-      <td><%= link_to 'View', "/requests/" + request.id.to_s %></td>
-    </tr>
-<%end%>
-  </tbody>
-</table>
+		<% @requests.each do |request| %>
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title"><%= request.description %></h5>
+				    <p class="card-text">Location: <%= request.location %></p>
+				    <p class="card-text">Accepted: <%= request.accepted %></p>
+				    <button href="/requests/new" type="button" class="btn btn-primary btn-lg"><%= link_to 'View', "/requests/" + request.id.to_s %></button>
+				  </div>
+				</div>
+		<%end%>
+</div>

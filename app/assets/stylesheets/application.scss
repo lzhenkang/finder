@@ -14,3 +14,15 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  background-image: url('/assets/background4.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}

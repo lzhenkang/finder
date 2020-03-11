@@ -1,22 +1,24 @@
-appointments/new.html.erb
+<div class="container">
+		appointments/new.html.erb
 
-<%= form_with scope: :appointment, url: appointments_path, local: true do |form| %>
+		<%= form_with scope: :appointment, url: appointments_path, local: true do |form| %>
 
-  <div>
-    <%= form.label :date %><br>
-    <%= form.date_select :date %>
-  </div>
+		  <div>
+		    <%= form.label :date %><br>
+		    <%= form.date_select :date %>
+		  </div>
 
-  <!-- <input name="user_id" type="hidden" value= <%= @user_id.to_i %>> -->
+		  <!-- <input name="user_id" type="hidden" value= <%= @user_id.to_i %>> -->
 
-  <%= form.select :time_slot, [ 'Morning','Afternoon','Evening' ], :prompt => 'Select Time Slot' %>
+		  <%= form.select :time_slot, [ 'Morning','Afternoon','Evening' ], :prompt => 'Select Time Slot' %>
 
-  <!-- <input name="accepted" type="hidden" value= false> -->
+		  <!-- <input name="accepted" type="hidden" value= false> -->
 
-  <p>
-    <%= form.submit %>
-  </p>
+		  <p>
+		    <%= form.submit %>
+		  </p>
 
-<% end %>
+		<% end %>
 
-<%= link_to 'Back', "/requests/all" %>
+		<%= link_to 'Back', "/requests/all" %>
+</div>

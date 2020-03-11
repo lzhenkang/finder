@@ -31,6 +31,10 @@ before_action :authenticate_user!, :except => [ :show, :index ]
     end
 
     def destroy
+      @appointments = Appointment.find(params[:id])
+      @appointments.destroy
+
+      redirect_to root_path
     end
 
     def join

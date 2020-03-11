@@ -1,31 +1,33 @@
-requests/show.html.erb
+<div class="container">
+		requests/show.html.erb
 
-<div>id: <%= @requests.id %></div>
-<div>user_id: <%= @requests.user_id %></div>
-<div>description: <%= @requests.description %></div>
-<div>accepted: <%= @requests.accepted %></div>
+		<div>id: <%= @requests.id %></div>
+		<div>user_id: <%= @requests.user_id %></div>
+		<div>description: <%= @requests.description %></div>
+		<div>accepted: <%= @requests.accepted %></div>
 
-<% if @requests.user_id == @user_id %>
-		<%= link_to 'Destroy', "/requests/" + params[:id],
-        method: :delete,
-        data: { confirm: 'Are you sure?' } %>
-<%end%>
+		<% if @requests.user_id == @user_id %>
+				<%= link_to 'Destroy', "/requests/" + params[:id],
+		        method: :delete,
+		        data: { confirm: 'Are you sure?' } %>
+		<%end%>
 
-<!-- if post is not made by user and request is not accepted -->
-<% if (@requests.user_id != @user_id) && (@requests.accepted == false)%>
-		<%= form_with scope: :join, url: "/requests/" + params[:id], local: true do |form| %>
-			  <p>
-			    <%= form.hidden_field :user_id, :value => @user_id %>
-			  </p>
-			  <p>
-			    <%= form.submit %>
-			  </p>
-	  <%end%>
-<%end%>
+		<!-- if post is not made by user and request is not accepted -->
+		<% if (@requests.user_id != @user_id) && (@requests.accepted == false)%>
+				<%= form_with scope: :join, url: "/requests/" + params[:id], local: true do |form| %>
+					  <p>
+					    <%= form.hidden_field :user_id, :value => @user_id %>
+					  </p>
+					  <p>
+					    <%= form.submit %>
+					  </p>
+			  <%end%>
+		<%end%>
 
-<!-- if user (user_id) already accepted request -->
-<% if (@requests.user_id != @user_id) && (@requests.accepted == true)%>
-		<%= link_to 'unjoin', "/requests/" + params[:id] + "/unjoin",
-        method: :delete,
-        data: { confirm: 'Are you sure?' } %>
-<%end%>
+		<!-- if user (user_id) already accepted request -->
+		<% if (@requests.user_id != @user_id) && (@requests.accepted == true)%>
+				<%= link_to 'unjoin', "/requests/" + params[:id] + "/unjoin",
+		        method: :delete,
+		        data: { confirm: 'Are you sure?' } %>
+		<%end%>
+</div>
