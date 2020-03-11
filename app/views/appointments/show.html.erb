@@ -29,8 +29,8 @@ appointments/show.html.erb
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
 <%end%>
-
-<% if (@appointments.user_id != @user_id) && (@appointments.accepted == true)%>
+<!-- user is creator or user is the one that accepted and accepted is true -->
+<% if (@user_id == @appointments.user_id || @user_id == @accepted_appointment.user_id) && (@appointments.accepted == true)%>
 		<%= form_with scope: :comment, url: "/appointments/" + params[:id] + "/comment", local: true do |form| %>
 			  <p>
 			    <%= form.hidden_field :user_id, :value => @user_id %>

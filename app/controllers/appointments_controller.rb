@@ -21,6 +21,7 @@ before_action :authenticate_user!, :except => [ :show, :index ]
       @appointments = Appointment.find_by(id: params[:id])
       @user_id = current_user.id
       @comment = Comment.where(appointment_id: params[:id])
+      @accepted_appointment = AcceptedAppointment.find_by(appointment_id: params[:id])
     end
 
     def edit
