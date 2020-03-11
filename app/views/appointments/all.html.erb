@@ -1,30 +1,14 @@
 <div class="container">
-		appointments/all.html.erb
-		<div><%= link_to 'New Appointments', "/appointments/new" %></div>
-		<%= link_to 'Back', root_path %>
-
-		<table class="table">
-		  <thead>
-		    <tr>
-		    	<th scope="col">appointment_id</th>
-		      <th scope="col">user_id</th>
-		      <th scope="col">time_slot</th>
-		      <th scope="col">date</th>
-		      <th scope="col">accepted</th>
-		      <th scope="col">view appointment</th>
-		    </tr>
-		  </thead>
-		  <tbody>
+		<div><button type="button" class="btn btn-primary btn-lg"><%= link_to 'New Appointments', "/appointments/new" %></button></div>
+<h1 class ="display-3">All Appointments</h1>
 		<% @appointments.each do |appointment| %>
-		    <tr>
-		      <td><%= appointment.id %></td>
-		      <td><%= appointment.user_id %></td>
-		      <td><%= appointment.time_slot %></td>
-		      <td><%= appointment.date %></td>
-		      <td><%= appointment.accepted %></td>
-		      <td><%= link_to 'View', "/appointments/" + appointment.id.to_s %></td>
-		    </tr>
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title"><%= appointment.time_slot %></h5>
+				    <p class="card-text">Date: <%= appointment.date %></p>
+				    <p class="card-text">Accepted: <%= appointment.accepted %></p>
+				    <button href="/appointments/new" type="button" class="btn btn-primary btn-lg"><%= link_to 'View', "/appointments/" + appointment.id.to_s %></button>
+				  </div>
+				</div>
 		<%end%>
-		  </tbody>
-		</table>
 </div>

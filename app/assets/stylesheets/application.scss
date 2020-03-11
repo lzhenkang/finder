@@ -26,3 +26,12 @@ a {
     color: #ffffff;
     text-decoration: none;
 }
+.card{
+	display: inline-block;
+
+}
+
+#cardContainer{
+	flex-wrap: wrap;
+	justify-content: center;
+}

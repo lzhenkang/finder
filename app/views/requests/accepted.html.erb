@@ -1,55 +1,31 @@
 <div class="container">
-		/accepted
 
-		<!-- <#% request = @accepted_request.map{|x| x.request} %> -->
 
-		<table class="table">
-		  <thead>
-		    <tr>
-		    	<th scope="col">request_id</th>
-		      <th scope="col">user_id</th>
-		      <th scope="col">description</th>
-		      <th scope="col">location</th>
-		      <th scope="col">accepted</th>
-		      <th scope="col">view request</th>
-		    </tr>
-		  </thead>
-		  <tbody>
+
+<h1 class ="display-3">Accepted Requests</h1>
+	<div class="container" id = "cardContainer">
 		<% @accepted_request.each do |request| %>
-		    <tr>
-		      <td><%= request.request.id %></td>
-		      <td><%= request.request.user_id %></td>
-		      <td><%= request.request.description %></td>
-		      <td><%= request.request.location %></td>
-		      <td><%= request.request.accepted %></td>
-		      <td><%= link_to 'View', "/requests/" + request.request.id.to_s %></td>
-		    </tr>
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title"><%= request.request.description %></h5>
+				    <p class="card-text">Location: <%= request.request.location %></p>
+				    <p class="card-text">Accepted: <%= request.request.accepted %></p>
+				    <button href="/requests/new" type="button" class="btn btn-primary btn-lg"><%= link_to 'View', "/requests/" + request.request.id.to_s %></button>
+				  </div>
+				</div>
 		<%end%>
-		  </tbody>
-		</table>
-
-		<table class="table">
-		  <thead>
-		    <tr>
-		    	<th scope="col">appointment_id</th>
-		      <th scope="col">user_id</th>
-		      <th scope="col">time_slot</th>
-		      <th scope="col">date</th>
-		      <th scope="col">accepted</th>
-		      <th scope="col">view request</th>
-		    </tr>
-		  </thead>
-		  <tbody>
+	</div>
+<h1 class ="display-3">Accepted Appointments</h1>
+	<div class="container" id = "cardContainer">
 		<% @accepted_appointment.each do |appointment| %>
-		    <tr>
-		      <td><%= appointment.appointment.id %></td>
-		      <td><%= appointment.appointment.user_id %></td>
-		      <td><%= appointment.appointment.time_slot %></td>
-		      <td><%= appointment.appointment.date %></td>
-		      <td><%= appointment.appointment.accepted %></td>
-		      <td><%= link_to 'View', "/appointments/" + appointment.appointment.id.to_s %></td>
-		    </tr>
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title"><%= appointment.appointment.time_slot %></h5>
+				    <p class="card-text">Date: <%= appointment.appointment.date %></p>
+				    <p class="card-text">Accepted: <%= appointment.appointment.accepted %></p>
+				    <button href="/appointments/new" type="button" class="btn btn-primary btn-lg"><%= link_to 'View', "/appointments/" + appointment.appointment.id.to_s %></button>
+				  </div>
+				</div>
 		<%end%>
-		  </tbody>
-		</table>
+	</div>
 </div>

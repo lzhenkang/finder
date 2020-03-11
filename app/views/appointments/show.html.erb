@@ -30,6 +30,8 @@
 		        method: :delete,
 		        data: { confirm: 'Are you sure?' } %>
 		<%end%>
+
+
 		<!-- user is creator or user is the one that accepted and accepted is true -->
 		<% if (@appointments.accepted == true)%>
 				<%= form_with scope: :comment, url: "/appointments/" + params[:id] + "/comment", local: true do |form| %>
@@ -45,7 +47,7 @@
 			  <%end%>
 		<%end%>
 
-		<% if (@appointments.user_id != @user_id) && (@appointments.accepted == true)%>
+		<% if (@appointments.accepted == true)%>
 		<table class="table">
 		  <thead>
 		    <tr>
